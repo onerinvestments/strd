@@ -1,0 +1,29 @@
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+
+
+    <appender name="STDOUT"
+              class="ch.qos.logback.core.ConsoleAppender">
+
+        <filter class="strd.DuplicateFilter"></filter>
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%date %-6level [%-8.8thread] %-30.30logger | %msg%n</Pattern>
+        </layout>
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+
+    </appender>
+
+    <logger name="org.apache" level="ERROR"/>
+    <logger name="com.mchange" level="ERROR"/>
+    <logger name="org.springframework" level="ERROR"/>
+    <logger name="kafka" level="ERROR"/>
+
+
+    <root level="debug">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
